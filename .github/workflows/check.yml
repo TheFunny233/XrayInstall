@@ -9,4 +9,3 @@ jobs:
       - run: busybox ash -n xray-reality.sh
       - run: shellcheck -s ash xray-reality.sh
       - run: busybox ash tests/unit.sh ./xray-reality.sh
-
