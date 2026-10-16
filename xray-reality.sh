@@ -559,4 +559,3 @@ if [ "${XRAY_REALITY_SOURCE_ONLY:-0}" != 1 ]; then
   trap 'exit 143' TERM
   main "$@"
 fi
-
