@@ -46,4 +46,3 @@ JSON
 }
 apply_policy | jq -e '.policy.levels["0"].bufferSize==64 and .policy.levels["0"].connIdle==120 and .inbounds[0].settings.clients[0].id=="keep"' >/dev/null
 echo 'All unit tests passed'
-
