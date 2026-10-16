@@ -111,4 +111,3 @@ busybox ash tests/unit.sh ./xray-reality.sh
 单元测试覆盖地址校验、IPv6 URI 格式和备注编码、内存档位及 policy 输出；实机安装/回滚测试另外进行。运行单元测试需要 `busybox` 和 `jq`。
 
 已在 Alpine 3.23 / x86_64 / 192,000,000 字节 cgroup 内存配额下完成安装和管理命令实测：IPv6 回环连接上的 REALITY + Vision 握手、经 SOCKS 发起 HTTPS 请求、占用端口触发回滚、增删用户、SNI/端口修改、内存参数修改与重算。公网 IPv6 入站连通性仍取决于服务商和客户端网络。
-
