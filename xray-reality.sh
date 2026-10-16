@@ -163,7 +163,7 @@ install_core() {
 }
 
 load_state() {
-  [ -r "$STATE_FILE" ] && [ -r "$CONF_FILE" ] || die "请先运行 $SELF install"
+  if [ ! -r "$STATE_FILE" ] || [ ! -r "$CONF_FILE" ]; then die "请先运行 $SELF install"; fi
   # Values are written only after validation; state is root-owned, mode 600.
   # shellcheck disable=SC1090
   . "$STATE_FILE"
@@ -360,7 +360,7 @@ do_install() {
   _keys=$(core x25519)
   _private_key=$(printf '%s\n' "$_keys" | sed -n 's/^PrivateKey: *//p')
   PUBLIC_KEY=$(printf '%s\n' "$_keys" | sed -n -e 's/^Password (PublicKey): *//p' -e 's/^PublicKey: *//p' -e 's/^Password: *//p' | head -1)
-  [ -n "$_private_key" ] && [ -n "$PUBLIC_KEY" ] || die '生成密钥失败'
+  if [ -z "$_private_key" ] || [ -z "$PUBLIC_KEY" ]; then die '生成密钥失败'; fi
   SHORT_ID=$(openssl rand -hex 8)
   mkdir -p /var/log/xray
   touch /var/log/xray/error.log
